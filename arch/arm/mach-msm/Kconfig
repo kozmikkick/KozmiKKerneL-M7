@@ -2700,6 +2700,12 @@ config MACH_T6_DXG
         help
           Support for the HTC APQ8064 T6_DXG.
 
+config KOZMIK_OVERCLOCKING
+        depends on ARCH_APQ8064 && MACH_M7_UL
+        bool "KozmiK Overlocking"
+        help
+          Add higher frequencies to APQ8064 M7.
+
 config QSC_MODEM
         default n
         bool "QMC QSC MODEM"
