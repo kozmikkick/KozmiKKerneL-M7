@@ -36,6 +36,8 @@
 #include <mach/perflock.h>
 #endif
 
+#include <mach/msm-config.h>
+
 #ifdef CONFIG_SMP
 struct cpufreq_work_struct {
 	struct work_struct work;
