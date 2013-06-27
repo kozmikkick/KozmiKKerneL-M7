@@ -3,6 +3,7 @@ cd ..
 export CROSS_COMPILE=arm-eabi- ARCH=arm SUBARM=arm
 make -j8 kozmik_defconfig
 make -j8
+now=$(date +"%Y%m%d_%H%M")
 
 # copy modules
 find arch -type f -name '*.ko' -exec cp -f {} Build/KozmiKKernel/modules \;
@@ -13,7 +14,6 @@ find fs -type f -name '*.ko' -exec cp -f {} Build/KozmiKKernel/modules \;
 find ipc -type f -name '*.ko' -exec cp -f {} Build/KozmiKKernel/modules \;
 find net -type f -name '*.ko' -exec cp -f {} Build/KozmiKKernel/modules \;
 
-####Building sense boot.img Start####
 cd Build
 cd ..
 
@@ -24,7 +24,7 @@ cd Build
 
 # compile install zip
 cd KozmiKKernel
-zip -r ./KozmiKKernel.zip ./META-INF ./modules ./kernel
+zip -r ./KozmiKKernel-M7-$(echo $now).zip ./META-INF ./modules ./kernel
 
 # cleaning up
 cd ..
