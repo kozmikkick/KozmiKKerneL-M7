@@ -61,6 +61,8 @@ set_perm(0, 0, 0777, "/tmp/busybox");
 ui_print("Pull the boot.img from your phone...");
 run_program("/sbin/busybox", "dd", "if=/dev/block/mmcblk0p33", "of=/tmp/boot.img");
 
+unmount("/system");
+
 ui_print("Extract boot.img...");
 run_program("/tmp/unpackbootimg", "-i", "/tmp/boot.img", "-o", "/tmp/");
 
@@ -70,6 +72,5 @@ run_program("/tmp/mkbootimg.sh");
 ui_print("Flashing New boot.img...");
 run_program("/sbin/busybox", "dd", "if=/tmp/newboot.img", "of=/dev/block/mmcblk0p33");
 
-unmount("/system");
 ui_print("");
 ui_print("");
